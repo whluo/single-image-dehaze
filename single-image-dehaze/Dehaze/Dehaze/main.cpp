@@ -9,7 +9,7 @@ using namespace std;
 
 int main()
 {
-	IplImage *img = cvLoadImage(".//test pictures//house-input.bmp");
+	IplImage *img = cvLoadImage(".//test pictures//hongkong.bmp");
 	IplImage *res;
 	int winsize = 2 * max(img->height, img->width) / 50 + 1;
 	CorrosionDehaze tool;
