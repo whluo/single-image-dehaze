@@ -176,6 +176,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\CorrosionDehaze.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\DehazeBase.cpp"
 				>
 			</File>
@@ -195,6 +199,10 @@
 			>
 			<File
 				RelativePath=".\CommonDehaze.h"
+				>
+			</File>
+			<File
+				RelativePath=".\CorrosionDehaze.h"
 				>
 			</File>
 			<File

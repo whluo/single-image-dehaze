@@ -1,6 +1,7 @@
 #include "Set.h"
 #include "FastDehaze.h"
 #include "CommonDehaze.h"
+#include "CorrosionDehaze.h"
 #include <ctime>
 #include <iostream>
 
@@ -8,10 +9,10 @@ using namespace std;
 
 int main()
 {
-	IplImage *img = cvLoadImage(".//test pictures//canon3.bmp");
+	IplImage *img = cvLoadImage(".//test pictures//house-input.bmp");
 	IplImage *res;
 	int winsize = 2 * max(img->height, img->width) / 50 + 1;
-	CommonDehaze tool;
+	CorrosionDehaze tool;
 	tool.setMedianParam( winsize, winsize );
 	tool.setBilateralParam( winsize, BDR, BDD, BBIN );
 	tool.setJointParam( winsize, DRL, DRC, DD, BIN );
