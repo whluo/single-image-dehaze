@@ -249,10 +249,10 @@ void fast_BilateralFilter::DealMove( int k, int x, int y, double &SumW, double &
 		{
 		case Y_MOVE_ADD:
 		case Y_MOVE_SUB:
-			if( (y >= 0) && (y < Height)  && ((b + x) >= 0) && ((b + x) < Width) )
+			if( (y >= 0) && (y < Height) && ((b + x) >= 0) && ((b + x) < Width) )
 			{
 				temp1 = k * ImageSize + y * Width + b + x;
-				temp2 = bias * (bias + 1) + abs(b);
+				temp3 = bias * (bias + 1) + abs(b);
 				IsLegal = true;
 			}
 			break;
@@ -261,11 +261,12 @@ void fast_BilateralFilter::DealMove( int k, int x, int y, double &SumW, double &
 			if( (x >= 0) && (x < Width) && ((b + y) >= 0) && ((b + y) < Height) )
 			{
 				temp1 = k * ImageSize + (y + b) * Width + x;
-				temp2 = abs(b) * (bias + 1) + bias;
+				temp3 = abs(b) * (bias + 1) + bias;
 				IsLegal = true;
 			}
 			break;
 		}
+
 		if( IsLegal )
 		{
 			switch( flag )

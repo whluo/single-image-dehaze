@@ -29,8 +29,8 @@ public:
 protected:
 	virtual void preDoEnhance(IplImage *resultbuf) = 0;
 	virtual void doEnhance(IplImage *referImage) = 0;
+	virtual void doSmooth();
 
-	void doSmooth();
 	int  generateAirligth();
 	void generateTranMap(int airlight, double *TranMap);
 	void generateDarkestImage(const IplImage *src);
