@@ -1,8 +1,5 @@
 #include "BilateralFilter.h"
 #include <math.h>
-
-#include <iostream>
-using namespace std;
  
 common_BilateralFilter::common_BilateralFilter()
 :m_KernelSize(0),
