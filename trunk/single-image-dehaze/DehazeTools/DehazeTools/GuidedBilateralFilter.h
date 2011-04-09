@@ -25,6 +25,7 @@ protected:
 	void getDistParam(double *buf);
 	void getResult(const double *ComParam, const double *DisParam, 
 		const double *ImageContentsrc, const double *ImageContentref, CvSize size);
+
 protected:
 	double m_DrL;
 	double m_DrC;
