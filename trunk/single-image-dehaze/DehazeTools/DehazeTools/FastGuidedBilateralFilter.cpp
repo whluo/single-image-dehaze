@@ -83,6 +83,7 @@ void fast_GuidedBilateralFilter::doGuidedBilateralFilter( const IplImage *SrcIma
 	delete UnitedImageL;
 	delete JkB;
 	ExtractImage( UnitedResult );
+	delete UnitedResult;
 }
 
 void fast_GuidedBilateralFilter::GetUnitedResult( const double *UnitedImage, const double *JkB, double *UnitedResult )

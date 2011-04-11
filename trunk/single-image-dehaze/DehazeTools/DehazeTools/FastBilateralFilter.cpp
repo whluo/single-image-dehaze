@@ -69,6 +69,7 @@ void fast_BilateralFilter::doBilateralFilter( const IplImage *SrcImageL, IplImag
 	delete UnitedImageL;
 	delete JkB;
 	ExtractImage( UnitedResult );
+	delete UnitedResult;
 }
 
 void fast_BilateralFilter::GetUnitedResult( const double *UnitedImage, const double *JkB, double *UnitedResult )

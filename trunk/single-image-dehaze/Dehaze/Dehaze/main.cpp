@@ -9,9 +9,10 @@ using namespace std;
 
 int main()
 {
-	IplImage *img = cvLoadImage(".//toys.jpg");
+	IplImage *img = cvLoadImage(".//hongkong.bmp");
 	IplImage *res;
 	int winsize = 2 * max(img->height, img->width) / 50 + 1;
+	winsize = WIN;
 	CorrosionDehaze tool;
 	tool.setMedianParam( winsize, winsize );
 	tool.setBilateralParam( winsize, BDR, BDD, BBIN );
