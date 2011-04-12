@@ -6,8 +6,8 @@
 #define P   0.95
 
 #define DD 20
-#define DRC 10
-#define DRL 10
+#define DRC 30
+#define DRL 30
 
 #define BDD 20
 #define BDR 20
