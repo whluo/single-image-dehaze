@@ -21,6 +21,7 @@ public:
 	IplImage *getTranMapImage() const { return m_TranMapImage; };
 	IplImage *getSmoothImage()  const { return m_SmoothImage;  };
 	IplImage *getBilaFilImage() const { return m_BilaFilImage; };
+	IplImage *getDarkBilImage() const { return m_DarkBilImage; };
 
 	IplImage *doDehaze(const IplImage *src);
 
@@ -56,6 +57,7 @@ protected:
 	unsigned int m_Joint_BinNum;
 
 	// Median result
+	IplImage *m_DarkBilImage;
 	IplImage *m_DarkestImage;
 	IplImage *m_TranMapImage;
 	IplImage *m_SmoothImage;

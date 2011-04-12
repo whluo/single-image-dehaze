@@ -7,6 +7,7 @@ DehazeBase::DehazeBase()
  m_TranMapImage(NULL),
  m_SmoothImage(NULL),
  m_BilaFilImage(NULL),
+ m_DarkBilImage(NULL),
  m_Result(NULL)
 {}
 
@@ -20,6 +21,8 @@ DehazeBase::~DehazeBase()
 		cvReleaseImage(&m_SmoothImage);
 	if (m_BilaFilImage != NULL)
 		cvReleaseImage(&m_BilaFilImage);
+	if (m_DarkBilImage != NULL)
+		cvReleaseImage(&m_DarkBilImage);
 }
 
 
@@ -58,6 +61,8 @@ void DehazeBase::ReleaseAll()
 		cvReleaseImage(&m_SmoothImage);
 	if (m_BilaFilImage != NULL)
 		cvReleaseImage(&m_BilaFilImage);
+	if (m_DarkBilImage != NULL)
+		cvReleaseImage(&m_DarkBilImage);
 }
 
 IplImage *DehazeBase::doDehaze(const IplImage *src)
@@ -65,13 +70,12 @@ IplImage *DehazeBase::doDehaze(const IplImage *src)
 	int airlight;
 	double *TranMap  = new double[src->height * src->width];
 
-	IplImage *temp = cvCreateImage( cvGetSize(src), src->depth, 1 );
-
 	m_Result = cvCreateImage( cvGetSize(src), src->depth, src->nChannels );
 	m_DarkestImage = cvCreateImage( cvGetSize(src), src->depth, 1 );
 	m_TranMapImage = cvCreateImage( cvGetSize(src), src->depth, 1 );
 	m_SmoothImage  = cvCreateImage( cvGetSize(src), src->depth, 1 );
 	m_BilaFilImage = cvCreateImage( cvGetSize(src), src->depth, 1 );
+	m_DarkBilImage = cvCreateImage( cvGetSize(src), src->depth, 1 );
 
 	// The input is m_DarkestImage
 	generateDarkestImage(src);
@@ -82,9 +86,9 @@ IplImage *DehazeBase::doDehaze(const IplImage *src)
 	doSmooth();
 
 	// The input is m_DarkestImage
-	preDoEnhance(temp);
+	preDoEnhance(m_DarkBilImage);
 	// The input is m_SmoothImage and the output is in m_BilaFilImage
-	doEnhance(temp);
+	doEnhance(m_DarkBilImage);
 	// doEnhance(m_DarkestImage);
 
 	// The input is m_BilaFilImage
@@ -96,8 +100,6 @@ IplImage *DehazeBase::doDehaze(const IplImage *src)
 	doDehaze(src, TranMap, airlight);
 	
 	delete TranMap;
-	cvReleaseImage(&temp);
-
 	return m_Result;
 }
 
